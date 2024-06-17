@@ -1,0 +1,12 @@
+# SQLite database
+db.sqlite3
+
+# Migration files
+migrations/
+
+
+# Media files
+mediafiles/
+
+# Virtual environment
+myenv/

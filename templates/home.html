@@ -1,0 +1,441 @@
+{%extends 'base.html' %} {%block cdns%}
+<style>
+	.description-container {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+</style>
+{%endblock cdns%} {%block content%}
+<div
+	id="delete-modal"
+	class="hidden fixed modal inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]"
+>
+	<div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 relative">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="w-3.5 cursor-pointer shrink-0 fill-gray-400 hover:fill-red-500 float-right close-modal"
+			viewBox="0 0 320.591 320.591"
+		>
+			<path
+				d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+				data-original="#000000"
+			></path>
+			<path
+				d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+				data-original="#000000"
+			></path>
+		</svg>
+
+		<div class="my-4 text-center">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="w-14 fill-red-500 inline"
+				viewBox="0 0 24 24"
+			>
+				<path
+					d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
+					data-original="#000000"
+				/>
+				<path
+					d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
+					data-original="#000000"
+				/>
+			</svg>
+			<h4 class="text-gray-800 text-base font-semibold mt-4">
+				Are you sure you want to delete it?
+			</h4>
+
+			<div class="text-center space-x-4 mt-8">
+				<button
+					id="delete-button"
+					type="button"
+					class="px-4 py-2 rounded-lg text-white text-sm bg-red-600 hover:bg-red-700 active:bg-red-600"
+				>
+					Delete
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container mx-auto p-4 d-none">
+	<div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+		<!-- In Progress -->
+		<div class="p-4">
+			<div
+				class="bg-white rounded-lg shadow-lg border-2 border-blue-500 flex items-center justify-between py-3 px-3"
+			>
+				<h2 class="font-semibold text-lg">In Progress</h2>
+				<span class="text-sm text-gray-500">(2)</span>
+			</div>
+			<div class="mt-4 space-y-4" id="task-progress-container"></div>
+		</div>
+
+		<!-- Completed Task -->
+		<div class="p-4">
+			<div
+				class="bg-white rounded-lg shadow-lg border-2 border-blue-500 flex items-center justify-between py-3 px-3"
+			>
+				<h2 class="font-semibold text-lg">Completed Task</h2>
+				<span class="text-sm text-gray-500">(4)</span>
+			</div>
+			<div class="mt-4 space-y-4" id="task-completed-container"></div>
+		</div>
+
+		<!-- Over-Due -->
+		<div class="p-4">
+			<div
+				class="bg-white rounded-lg shadow-lg border-2 border-blue-500 flex items-center justify-between py-3 px-3"
+			>
+				<h2 class="font-semibold text-lg">Over-Due</h2>
+				<span class="text-sm text-gray-500">(5)</span>
+			</div>
+			<div class="mt-4 space-y-4" id="task-overdue-container"></div>
+		</div>
+	</div>
+</div>
+<!-- Create Task -->
+<div
+	id="add-task-modal"
+	class="hidden modal fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]"
+	style="background: radial-gradient(black, #000000e0)"
+>
+	<div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-8 relative">
+		<div class="flex items-center">
+			<h3 class="text-black-300 text-xl font-bold flex-1">Add New Task</h3>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="w-3 ml-2 cursor-pointer shrink-0 fill-gray-400 hover:fill-red-500 close-modal"
+				viewBox="0 0 320.591 320.591"
+			>
+				<path
+					d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+					data-original="#000000"
+				></path>
+				<path
+					d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+					data-original="#000000"
+				></path>
+			</svg>
+		</div>
+
+		<form class="space-y-4 mt-8" id="task-form">
+			{%csrf_token%}
+			<div>
+				<labe class="text-gray-800 text-sm mb-2 block"
+					>{{form.title.name}}</labe
+				>
+				{{form.title}}
+			</div>
+
+			<div>
+				<label class="text-gray-800 text-sm mb-2 block">Descriptions</label>
+				{{form.description}}
+			</div>
+
+			<div>
+				<labe class="text-gray-800 text-sm mb-2 block">Status</labe>
+				{{form.status}}
+			</div>
+
+			<div>
+				<labe class="text-gray-800 text-sm mb-2 block"
+					>{{form.priority.name}}</labe
+				>
+				{{form.priority}}
+			</div>
+
+			<div>
+				<labe class="text-gray-800 text-sm mb-2 block">Due Date</labe>
+				{{form.due_date}}
+			</div>
+
+			<div>
+				<labe class="text-gray-800 text-sm mb-2 block">Assign to</labe>
+				{{form.assigned_to}}
+			</div>
+
+			<div class="flex justify-end gap-4 !mt-8">
+				<button
+					type="button"
+					class="px-6 py-3 rounded-lg text-gray-800 text-sm border-none outline-none tracking-wide bg-gray-200 hover:bg-gray-300"
+				>
+					Cancel
+				</button>
+				<button
+					id="create-task"
+					type="submit"
+					class="px-6 py-3 rounded-lg text-white text-sm border-none outline-none tracking-wide bg-blue-600 hover:bg-blue-700"
+				>
+					Create
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- Edit Task -->
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{%endblock%} {%block scripts%}
+<script>
+	//
+	const getTasks = (method, url_path) => {
+		$.ajax({
+			type: method,
+			url: url_path,
+			success: (response) => {
+				console.log(response);
+				let p_data = "";
+				let c_data = "";
+				let o_data = "";
+				var InProgress = $("#task-progress-container");
+				var Completed = $("#task-completed-container");
+				var Overdue = $("#task-overdue-container");
+				InProgress.empty();
+				Completed.empty();
+				Overdue.empty();
+				response.forEach((element) => {
+					switch (element.status) {
+						case "In Progress":
+							p_data += `
+							<div class="flex items-center justify-between mb-2" id="container-${element.id}">
+								<span class="px-3 py-2 text-sm text-white bg-${element.color}-500 rounded"
+									>${element.priority}</span
+								>
+								<span class="px-3 py-2 text-sm text-gray-500 bg-gray-200 rounded"
+									><i class="fas fa-clock"></i> ${element.due_date}</span
+								>
+								<span
+									class="px-3 py-2 text-sm text-${element.color}-500 bg-purple-100 rounded"
+									>${element.category}</span
+								>
+							</div>
+							<div class="p-4 bg-gray-100 rounded-lg shadow">
+								<h3 class="font-semibold text-gray-800">${element.title}</h3>
+								<p class="text-gray-600 description-container">
+									${element.description}
+								</p>
+								<div class="flex items-center justify-between mt-2">
+									<div class="flex items-center space-x-1">
+										<span class="text-gray-500">0/3</span>
+									</div>
+									<div class="flex items-center space-x-1">
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<span class="text-gray-500">+2</span>
+									</div>
+								</div>
+								<div class="flex items-center justify-end space-x-2 mt-2">
+									<button class="text-gray-500 hover:text-gray-700">
+										<i class="fas fa-eye"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 delete-task" data-id="${element.id}">
+										<i class="fas fa-trash"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 edit" data-id="${element.id}">
+										<i class="fas fa-edit"></i>
+									</button>
+								</div>
+							</div>
+							`;
+							InProgress.empty().append(p_data);
+							console.log(InProgress.length);
+							break;
+						case "Completed":
+							c_data += `
+								<div class="flex items-center justify-between mb-2" id="container-${element.id}">
+									<span class="px-3 py-2 text-sm text-white bg-${element.color}-500 rounded"
+										>${element.priority}</span
+									>
+									<span class="px-3 py-2 text-sm text-gray-500 bg-gray-200 rounded"
+										><i class="fas fa-clock"></i> ${element.due_date}</span
+									>
+									<span
+										class="px-3 py-2 text-sm text-${element.color}-500 bg-purple-100 rounded"
+										>${element.category}</span
+									>
+								</div>
+							<div class="p-4 bg-gray-100 rounded-lg shadow">
+								<h3 class="font-semibold text-gray-800">${element.title}</h3>
+								<p class="text-gray-600 description-container">
+									${element.description}
+								</p>
+								<div class="flex items-center justify-between mt-2">
+									<div class="flex items-center space-x-1">
+										<span class="text-gray-500">0/3</span>
+									</div>
+									<div class="flex items-center space-x-1">
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<span class="text-gray-500">+2</span>
+									</div>
+								</div>
+								<div class="flex items-center justify-end space-x-2 mt-2">
+									<button class="text-gray-500 hover:text-gray-700">
+										<i class="fas fa-eye"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 delete-task" data-id="${element.id}">
+										<i class="fas fa-trash"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 edit" data-id="${element.id}">
+										<i class="fas fa-edit"></i>
+									</button>
+								</div>
+							</div>
+							`;
+							Completed.empty().append(c_data);
+							break;
+						case "Overdue":
+							o_data += `
+							<div class="flex items-center justify-between mb-2" id="container-${element.id}">
+								<span class="px-3 py-2 text-sm text-white bg-${element.color}-500 rounded"
+									>${element.priority}</span
+								>
+								<span class="px-3 py-2 text-sm text-gray-500 bg-gray-200 rounded"
+									><i class="fas fa-clock"></i> ${element.due_date}</span
+								>
+								<span
+									class="px-3 py-2 text-sm text-${element.color}-500 bg-purple-100 rounded"
+									>${element.category}</span
+								>
+							</div>
+							<div class="p-4 bg-gray-100 rounded-lg shadow">
+								<h3 class="font-semibold text-gray-800">${element.title}</h3>
+								<p class="text-gray-600 description-container">
+									${element.description}
+								</p>
+								<div class="flex items-center justify-between mt-2">
+									<div class="flex items-center space-x-1">
+										<span class="text-gray-500">0/3</span>
+									</div>
+									<div class="flex items-center space-x-1">
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<img
+											class="w-6 h-6 rounded-full"
+											src="https://via.placeholder.com/24"
+											alt="avatar"
+										/>
+										<span class="text-gray-500">+2</span>
+									</div>
+								</div>
+								<div class="flex items-center justify-end space-x-2 mt-2">
+									<button class="text-gray-500 hover:text-gray-700">
+										<i class="fas fa-eye"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 delete-task" data-id="${element.id}">
+										<i class="fas fa-trash"></i>
+									</button>
+									<button class="text-gray-500 hover:text-gray-700 edit" data-id="${element.id}">
+										<i class="fas fa-edit"></i>
+									</button>
+								</div>
+							</div>
+							`;
+							Overdue.empty().append(o_data);
+							break;
+						default:
+							break;
+					}
+				});
+			},
+			error: () => {
+				console.log("An error occurred at the client side :(");
+			},
+		});
+	};
+	$(document).ready(function () {
+		let classes =
+			"px-4 py-3 bg-gray-100 w-full text-gray-800 text-sm border-none focus:outline-blue-600 focus:bg-transparent rounded-lg";
+		$("input").addClass(classes);
+		$("textarea").addClass(classes);
+		$("select").addClass(classes);
+		getTasks(`GET`, `/api/get-tasks/`);
+		// setInterval(() => getTasks(`GET`, `/api/get-tasks/`), 2000);
+	});
+	//
+	$(document).on("submit", "#task-form", (e) => {
+		e.preventDefault();
+		let formData = $("#task-form").serialize();
+		$.ajax({
+			type: "POST",
+			url: "/api/create-task/",
+			data: formData,
+			success: (response) => {
+				$("#alert-cont").removeClass("hidden").css("z-index", 2000);
+				$("#success-mssg").empty().text(response);
+				getTasks("GET", "/api/get-tasks/");
+				setTimeout(() => {
+					$("#success-mssg").empty();
+					$("input").val("");
+					$("textarea").val("");
+					$("select").val("");
+					$("#alert-cont").addClass("hidden").css("z-index", 0);
+					$("#close-task-modal").click();
+				}, 1500);
+			},
+			error: () => {
+				console.warn("Client error!");
+			},
+		});
+	});
+	//
+	$(document).on("click", ".delete-task", function () {
+		const taskId = $(this).data("id");
+		const deleteBtn = $("#delete-button");
+		const deleteModal = $("#delete-modal");
+		deleteModal.removeClass("hidden");
+		deleteBtn.attr("data-id", taskId);
+	});
+	//
+	$("#delete-button").click(function () {
+		const taskId = $(this).data("id");
+		$.ajax({
+			type: "DELETE",
+			url: `/api/delete-task/${taskId}/`,
+			success: function (response) {
+				alert("Task deleted successfully!");
+				getTasks("GET", "/api/get-tasks/"); // Refresh the task list
+			},
+			error: function () {
+				alert("Failed to delete the task. Please try again.");
+			},
+		});
+	});
+	//
+</script>
+{%endblock scripts%}
