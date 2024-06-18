@@ -100,3 +100,6 @@ We welcome contributions to Tasky! To contribute, follow these steps:
 5. **Create a Pull Request**
    - Navigate to the original repository you forked from.
    - Click the "New Pull Request" button and complete the necessary details.
+
+## Documentation
+After starting the local server enter `http://127.0.0.1:8000/docs/` into your browser to see documentation about the tasky.
