@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
-# This Python class defines a Task model with fields for title, description, status, priority, created
-# date, due date, category, and assigned user.
+# The `Task` class defines a model with fields for title, description, status, priority, created date,
+# due date, category, and assigned user, along with choices for status and priority.
 class Task(models.Model):
     # The classes below defines choices for status and priority fields in the Task model.
     class STATUS_CHOICES(models.TextChoices):

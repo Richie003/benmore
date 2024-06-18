@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>task_app package &mdash; Benmore 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Benmore
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">task_app package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-task_app.admin">task_app.admin module</a><ul>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin"><code class="docutils literal notranslate"><span class="pre">TaskAdmin</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.fieldsets"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.fieldsets</span></code></a></li>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.list_display"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.list_display</span></code></a></li>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.list_filter"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.list_filter</span></code></a></li>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.media"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.media</span></code></a></li>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.ordering"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.ordering</span></code></a></li>
+<li><a class="reference internal" href="#task_app.admin.TaskAdmin.search_fields"><code class="docutils literal notranslate"><span class="pre">TaskAdmin.search_fields</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-task_app.apps">task_app.apps module</a><ul>
+<li><a class="reference internal" href="#task_app.apps.TaskAppConfig"><code class="docutils literal notranslate"><span class="pre">TaskAppConfig</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.apps.TaskAppConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">TaskAppConfig.default_auto_field</span></code></a></li>
+<li><a class="reference internal" href="#task_app.apps.TaskAppConfig.name"><code class="docutils literal notranslate"><span class="pre">TaskAppConfig.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-task_app.forms">task_app.forms module</a><ul>
+<li><a class="reference internal" href="#task_app.forms.TaskForm"><code class="docutils literal notranslate"><span class="pre">TaskForm</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.Meta"><code class="docutils literal notranslate"><span class="pre">TaskForm.Meta</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.Meta.fields"><code class="docutils literal notranslate"><span class="pre">TaskForm.Meta.fields</span></code></a></li>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.Meta.model"><code class="docutils literal notranslate"><span class="pre">TaskForm.Meta.model</span></code></a></li>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.Meta.widgets"><code class="docutils literal notranslate"><span class="pre">TaskForm.Meta.widgets</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.base_fields"><code class="docutils literal notranslate"><span class="pre">TaskForm.base_fields</span></code></a></li>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">TaskForm.declared_fields</span></code></a></li>
+<li><a class="reference internal" href="#task_app.forms.TaskForm.media"><code class="docutils literal notranslate"><span class="pre">TaskForm.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-task_app.models">task_app.models module</a><ul>
+<li><a class="reference internal" href="#task_app.models.Task"><code class="docutils literal notranslate"><span class="pre">Task</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.models.Task.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Task.DoesNotExist</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.META"><code class="docutils literal notranslate"><span class="pre">Task.META</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.models.Task.META.ordering"><code class="docutils literal notranslate"><span class="pre">Task.META.ordering</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task_app.models.Task.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Task.MultipleObjectsReturned</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.PRIORITY_CHOICES"><code class="docutils literal notranslate"><span class="pre">Task.PRIORITY_CHOICES</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.models.Task.PRIORITY_CHOICES.HIGH"><code class="docutils literal notranslate"><span class="pre">Task.PRIORITY_CHOICES.HIGH</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.PRIORITY_CHOICES.LOW"><code class="docutils literal notranslate"><span class="pre">Task.PRIORITY_CHOICES.LOW</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.PRIORITY_CHOICES.MEDIUM"><code class="docutils literal notranslate"><span class="pre">Task.PRIORITY_CHOICES.MEDIUM</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task_app.models.Task.STATUS_CHOICES"><code class="docutils literal notranslate"><span class="pre">Task.STATUS_CHOICES</span></code></a><ul>
+<li><a class="reference internal" href="#task_app.models.Task.STATUS_CHOICES.COMPLETED"><code class="docutils literal notranslate"><span class="pre">Task.STATUS_CHOICES.COMPLETED</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.STATUS_CHOICES.OVERDUE"><code class="docutils literal notranslate"><span class="pre">Task.STATUS_CHOICES.OVERDUE</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.STATUS_CHOICES.PROGRESS"><code class="docutils literal notranslate"><span class="pre">Task.STATUS_CHOICES.PROGRESS</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task_app.models.Task.assigned_to"><code class="docutils literal notranslate"><span class="pre">Task.assigned_to</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.assigned_to_id"><code class="docutils literal notranslate"><span class="pre">Task.assigned_to_id</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.category"><code class="docutils literal notranslate"><span class="pre">Task.category</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.created"><code class="docutils literal notranslate"><span class="pre">Task.created</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.description"><code class="docutils literal notranslate"><span class="pre">Task.description</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.due_date"><code class="docutils literal notranslate"><span class="pre">Task.due_date</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_next_by_created"><code class="docutils literal notranslate"><span class="pre">Task.get_next_by_created()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_next_by_due_date"><code class="docutils literal notranslate"><span class="pre">Task.get_next_by_due_date()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_previous_by_created"><code class="docutils literal notranslate"><span class="pre">Task.get_previous_by_created()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_previous_by_due_date"><code class="docutils literal notranslate"><span class="pre">Task.get_previous_by_due_date()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_priority_display"><code class="docutils literal notranslate"><span class="pre">Task.get_priority_display()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.get_status_display"><code class="docutils literal notranslate"><span class="pre">Task.get_status_display()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.id"><code class="docutils literal notranslate"><span class="pre">Task.id</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.objects"><code class="docutils literal notranslate"><span class="pre">Task.objects</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.priority"><code class="docutils literal notranslate"><span class="pre">Task.priority</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.status"><code class="docutils literal notranslate"><span class="pre">Task.status</span></code></a></li>
+<li><a class="reference internal" href="#task_app.models.Task.title"><code class="docutils literal notranslate"><span class="pre">Task.title</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-task_app.tests">task_app.tests module</a></li>
+<li><a class="reference internal" href="#module-task_app.urls">task_app.urls module</a></li>
+<li><a class="reference internal" href="#module-task_app.views">task_app.views module</a><ul>
+<li><a class="reference internal" href="#task_app.views.createTask"><code class="docutils literal notranslate"><span class="pre">createTask()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.views.deleteTask"><code class="docutils literal notranslate"><span class="pre">deleteTask()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.views.getTasks"><code class="docutils literal notranslate"><span class="pre">getTasks()</span></code></a></li>
+<li><a class="reference internal" href="#task_app.views.index"><code class="docutils literal notranslate"><span class="pre">index()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-task_app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Benmore</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">task_app package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/task_app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="task-app-package">
+<h1>task_app package<a class="headerlink" href="#task-app-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="task_app.migrations.html">task_app.migrations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="task_app.migrations.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_app.migrations.html#module-task_app.migrations.0001_initial">task_app.migrations.0001_initial module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_app.migrations.html#module-task_app.migrations.0002_alter_task_priority">task_app.migrations.0002_alter_task_priority module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0002_alter_task_priority.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0002_alter_task_priority.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="task_app.migrations.html#task_app.migrations.0002_alter_task_priority.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="task_app.migrations.html#module-task_app.migrations">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-task_app.admin">
+<span id="task-app-admin-module"></span><h2>task_app.admin module<a class="headerlink" href="#module-task_app.admin" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_app.admin.</span></span><span class="sig-name descname"><span class="pre">TaskAdmin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">admin_site</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/admin.html#TaskAdmin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.admin.TaskAdmin" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelAdmin</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.fieldsets">
+<span class="sig-name descname"><span class="pre">fieldsets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">((None,</span> <span class="pre">{'fields':</span> <span class="pre">('title',</span> <span class="pre">'description',</span> <span class="pre">'status',</span> <span class="pre">'priority',</span> <span class="pre">'due_date',</span> <span class="pre">'category',</span> <span class="pre">'assigned_to')}),)</span></em><a class="headerlink" href="#task_app.admin.TaskAdmin.fieldsets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.list_display">
+<span class="sig-name descname"><span class="pre">list_display</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('title',</span> <span class="pre">'status',</span> <span class="pre">'priority',</span> <span class="pre">'due_date',</span> <span class="pre">'assigned_to',</span> <span class="pre">'created')</span></em><a class="headerlink" href="#task_app.admin.TaskAdmin.list_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.list_filter">
+<span class="sig-name descname"><span class="pre">list_filter</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('status',</span> <span class="pre">'priority',</span> <span class="pre">'due_date',</span> <span class="pre">'assigned_to')</span></em><a class="headerlink" href="#task_app.admin.TaskAdmin.list_filter" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#task_app.admin.TaskAdmin.media" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.ordering">
+<span class="sig-name descname"><span class="pre">ordering</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('-due_date',</span> <span class="pre">'created')</span></em><a class="headerlink" href="#task_app.admin.TaskAdmin.ordering" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.admin.TaskAdmin.search_fields">
+<span class="sig-name descname"><span class="pre">search_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('title',</span> <span class="pre">'description',</span> <span class="pre">'category',</span> <span class="pre">'assigned_to__username')</span></em><a class="headerlink" href="#task_app.admin.TaskAdmin.search_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-task_app.apps">
+<span id="task-app-apps-module"></span><h2>task_app.apps module<a class="headerlink" href="#module-task_app.apps" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.apps.TaskAppConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_app.apps.</span></span><span class="sig-name descname"><span class="pre">TaskAppConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/apps.html#TaskAppConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.apps.TaskAppConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.apps.TaskAppConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#task_app.apps.TaskAppConfig.default_auto_field" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.apps.TaskAppConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'task_app'</span></em><a class="headerlink" href="#task_app.apps.TaskAppConfig.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-task_app.forms">
+<span id="task-app-forms-module"></span><h2>task_app.forms module<a class="headerlink" href="#module-task_app.forms" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_app.forms.</span></span><span class="sig-name descname"><span class="pre">TaskForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/forms.html#TaskForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.forms.TaskForm" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelForm</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/task_app/forms.html#TaskForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.forms.TaskForm.Meta" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['title',</span> <span class="pre">'description',</span> <span class="pre">'status',</span> <span class="pre">'priority',</span> <span class="pre">'due_date',</span> <span class="pre">'category',</span> <span class="pre">'assigned_to']</span></em><a class="headerlink" href="#task_app.forms.TaskForm.Meta.fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#task_app.forms.TaskForm.Meta.model" title="Permalink to this definition"></a></dt>
+<dd><p>alias of <a class="reference internal" href="#task_app.models.Task" title="task_app.models.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.Meta.widgets">
+<span class="sig-name descname"><span class="pre">widgets</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'assigned_to':</span> <span class="pre">&lt;django.forms.widgets.Select</span> <span class="pre">object&gt;,</span> <span class="pre">'category':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;,</span> <span class="pre">'description':</span> <span class="pre">&lt;django.forms.widgets.Textarea</span> <span class="pre">object&gt;,</span> <span class="pre">'title':</span> <span class="pre">&lt;django.forms.widgets.TextInput</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#task_app.forms.TaskForm.Meta.widgets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'assigned_to':</span> <span class="pre">&lt;django.forms.models.ModelChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'category':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'description':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'due_date':</span> <span class="pre">&lt;django.forms.fields.DateTimeField</span> <span class="pre">object&gt;,</span> <span class="pre">'priority':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'status':</span> <span class="pre">&lt;django.forms.fields.TypedChoiceField</span> <span class="pre">object&gt;,</span> <span class="pre">'title':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#task_app.forms.TaskForm.base_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'due_date':</span> <span class="pre">&lt;django.forms.fields.DateTimeField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#task_app.forms.TaskForm.declared_fields" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="task_app.forms.TaskForm.media">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#task_app.forms.TaskForm.media" title="Permalink to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-task_app.models">
+<span id="task-app-models-module"></span><h2>task_app.models module<a class="headerlink" href="#module-task_app.models" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.models.Task">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">task_app.models.</span></span><span class="sig-name descname"><span class="pre">Task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">due_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assigned_to</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/models.html#Task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.models.Task" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="task_app.models.Task.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#task_app.models.Task.DoesNotExist" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.models.Task.META">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">META</span></span><a class="reference internal" href="_modules/task_app/models.html#Task.META"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.models.Task.META" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.META.ordering">
+<span class="sig-name descname"><span class="pre">ordering</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['-due_date',</span> <span class="pre">'created']</span></em><a class="headerlink" href="#task_app.models.Task.META.ordering" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="task_app.models.Task.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#task_app.models.Task.MultipleObjectsReturned" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.models.Task.PRIORITY_CHOICES">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PRIORITY_CHOICES</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/models.html#Task.PRIORITY_CHOICES"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.models.Task.PRIORITY_CHOICES" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TextChoices</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.PRIORITY_CHOICES.HIGH">
+<span class="sig-name descname"><span class="pre">HIGH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'High'</span></em><a class="headerlink" href="#task_app.models.Task.PRIORITY_CHOICES.HIGH" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.PRIORITY_CHOICES.LOW">
+<span class="sig-name descname"><span class="pre">LOW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Low'</span></em><a class="headerlink" href="#task_app.models.Task.PRIORITY_CHOICES.LOW" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.PRIORITY_CHOICES.MEDIUM">
+<span class="sig-name descname"><span class="pre">MEDIUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Medium'</span></em><a class="headerlink" href="#task_app.models.Task.PRIORITY_CHOICES.MEDIUM" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="task_app.models.Task.STATUS_CHOICES">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">STATUS_CHOICES</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/models.html#Task.STATUS_CHOICES"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.models.Task.STATUS_CHOICES" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TextChoices</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.STATUS_CHOICES.COMPLETED">
+<span class="sig-name descname"><span class="pre">COMPLETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Completed'</span></em><a class="headerlink" href="#task_app.models.Task.STATUS_CHOICES.COMPLETED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.STATUS_CHOICES.OVERDUE">
+<span class="sig-name descname"><span class="pre">OVERDUE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Overdue'</span></em><a class="headerlink" href="#task_app.models.Task.STATUS_CHOICES.OVERDUE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.STATUS_CHOICES.PROGRESS">
+<span class="sig-name descname"><span class="pre">PROGRESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'In</span> <span class="pre">Progress'</span></em><a class="headerlink" href="#task_app.models.Task.STATUS_CHOICES.PROGRESS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.assigned_to">
+<span class="sig-name descname"><span class="pre">assigned_to</span></span><a class="headerlink" href="#task_app.models.Task.assigned_to" title="Permalink to this definition"></a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.assigned_to_id">
+<span class="sig-name descname"><span class="pre">assigned_to_id</span></span><a class="headerlink" href="#task_app.models.Task.assigned_to_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#task_app.models.Task.category" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.created">
+<span class="sig-name descname"><span class="pre">created</span></span><a class="headerlink" href="#task_app.models.Task.created" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.description">
+<span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#task_app.models.Task.description" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.due_date">
+<span class="sig-name descname"><span class="pre">due_date</span></span><a class="headerlink" href="#task_app.models.Task.due_date" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_next_by_created">
+<span class="sig-name descname"><span class="pre">get_next_by_created</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_next_by_created" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_next_by_due_date">
+<span class="sig-name descname"><span class="pre">get_next_by_due_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">due_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_next_by_due_date" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_previous_by_created">
+<span class="sig-name descname"><span class="pre">get_previous_by_created</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">created&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_previous_by_created" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_previous_by_due_date">
+<span class="sig-name descname"><span class="pre">get_previous_by_due_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.DateTimeField:</span> <span class="pre">due_date&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_next=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_previous_by_due_date" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_priority_display">
+<span class="sig-name descname"><span class="pre">get_priority_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">priority&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_priority_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="task_app.models.Task.get_status_display">
+<span class="sig-name descname"><span class="pre">get_status_display</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">field=&lt;django.db.models.fields.CharField:</span> <span class="pre">status&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#task_app.models.Task.get_status_display" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#task_app.models.Task.id" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;django.db.models.manager.Manager</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#task_app.models.Task.objects" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.priority">
+<span class="sig-name descname"><span class="pre">priority</span></span><a class="headerlink" href="#task_app.models.Task.priority" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#task_app.models.Task.status" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="task_app.models.Task.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#task_app.models.Task.title" title="Permalink to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-task_app.tests">
+<span id="task-app-tests-module"></span><h2>task_app.tests module<a class="headerlink" href="#module-task_app.tests" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-task_app.urls">
+<span id="task-app-urls-module"></span><h2>task_app.urls module<a class="headerlink" href="#module-task_app.urls" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-task_app.views">
+<span id="task-app-views-module"></span><h2>task_app.views module<a class="headerlink" href="#module-task_app.views" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="task_app.views.createTask">
+<span class="sig-prename descclassname"><span class="pre">task_app.views.</span></span><span class="sig-name descname"><span class="pre">createTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/views.html#createTask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.views.createTask" title="Permalink to this definition"></a></dt>
+<dd><p>The function <cite>createTask</cite> creates a new task object with specified attributes and returns a JSON
+response with the task details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The <cite>createTask</cite> function you provided is a Django view function that creates a new</p>
+</dd>
+</dl>
+<p>task based on the data received in a POST request. Here’s a breakdown of the parameters used in the
+function:
+:return: The <cite>createTask</cite> function is returning a JSON response containing the details of the task
+that was created or retrieved. The response includes the task’s ID, title, description, status,
+priority, due date, assigned user ID, and creation timestamp.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="task_app.views.deleteTask">
+<span class="sig-prename descclassname"><span class="pre">task_app.views.</span></span><span class="sig-name descname"><span class="pre">deleteTask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/views.html#deleteTask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.views.deleteTask" title="Permalink to this definition"></a></dt>
+<dd><p>The <cite>deleteTask</cite> function deletes a task with a specific ID if the request method is DELETE,
+returning a success message or an error message if the task is not found or the request method is
+invalid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The <cite>request</cite> parameter in the <cite>deleteTask</cite> function is typically an HTTP request</p>
+</dd>
+</dl>
+<p>object that contains information about the incoming request, such as the request method (e.g., GET,
+POST, DELETE), headers, and data. In this context, the function is expecting an HTTP DELETE request
+to delete
+:param task_id: The <cite>task_id</cite> parameter in the <cite>deleteTask</cite> function represents the unique
+identifier of the task that needs to be deleted. This identifier is used to locate the specific task
+in the database and then delete it from the system
+:return: The function <cite>deleteTask</cite> is returning a JSON response based on the conditions. If the
+request method is “DELETE”, it tries to delete the task with the given <cite>task_id</cite>. If the task is
+found and successfully deleted, it returns a JSON response with a success message and status code
+200. If the task is not found, it returns a JSON response with an error message indicating that the</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="task_app.views.getTasks">
+<span class="sig-prename descclassname"><span class="pre">task_app.views.</span></span><span class="sig-name descname"><span class="pre">getTasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/views.html#getTasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.views.getTasks" title="Permalink to this definition"></a></dt>
+<dd><p>The <cite>getTasks</cite> function retrieves tasks assigned to a user and returns them in JSON format with
+color coding based on priority.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The <cite>getTasks</cite> function takes a <cite>request</cite> object as a parameter. This object is</p>
+</dd>
+</dl>
+<p>expected to have a <cite>method</cite> attribute that indicates the HTTP method used in the request. The
+function then processes the request based on the HTTP method being “GET”
+:return: A JSON response containing task data is being returned. If there is an error, appropriate
+error messages with status codes are returned as JSON responses as well.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="task_app.views.index">
+<span class="sig-prename descclassname"><span class="pre">task_app.views.</span></span><span class="sig-name descname"><span class="pre">index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task_app/views.html#index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#task_app.views.index" title="Permalink to this definition"></a></dt>
+<dd><p>The <cite>index</cite> function prepares a form and retrieves all users to be displayed in the context for
+rendering the “home.html” template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> – The <cite>request</cite> parameter in the <cite>index</cite> function is typically an HttpRequest object</p>
+</dd>
+</dl>
+<p>that represents the request made by a user to a Django view. It contains information about the
+request, such as the user’s browser details, session information, and any data sent in the request
+(e.g., form data
+:return: The <cite>index</cite> function is returning a rendered template <cite>home.html</cite> along with a context
+containing a form and a list of all users retrieved from the database.</p>
+</dd></dl>
+
+</section>
+<section id="module-task_app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-task_app" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Richfield.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
