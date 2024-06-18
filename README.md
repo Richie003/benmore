@@ -27,12 +27,12 @@ Tasky is a task management and assignment web application built with Python, Dja
 ### Steps
 
 1. **Fork the Repository**
-   - Navigate to the [Tasky repository](https://github.com/your-username/tasky) on GitHub.
+   - Navigate to the [Benmore repository](https://github.com/Richie003/benmore) on GitHub.
    - Click the "Fork" button in the top-right corner of the page to create a copy of the repository under your GitHub account.
 
 2. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/tasky.git
+   git clone https://github.com/Richie003/benmore.git
    cd tasky
    ```
 
